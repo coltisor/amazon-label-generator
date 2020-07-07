@@ -18,7 +18,7 @@ Main characteristics are:
 
 ## Usage
 
-Access the application [URL]() or download the repository and run index.html file on any device.
+Access the application [Amazon Label Generator](https://hurryword.github.io/amazon-label-generator/) or download the repository and run index.html file on any device.
 
 ## Instructions
 
