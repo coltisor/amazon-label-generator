@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>PDF417 Barcode Generator</title>
+
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/tempusdominus-bootstrap-4.min.css">
+
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <style>
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <section class="container pb-3 p-0 p-md-3">
+            <div class="d-none d-md-block">
+                <h2>PDF417 Barcode Generator</h2>
+            </div>
+        
+            <div class="card mt-md-3">
+                <div class="card-header bg-primary text-white">
+                    Step 1: Shipment ID and Destination
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="shipment_id">Shipment ID</label>
+                                <input type="text" class="form-control" id="shipment_id" placeholder="Shipment ID">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="shipment_id">Destination Warehouse</label>
+                                <input type="text" class="form-control" id="destination" placeholder="Destination Warehouse">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="printed_date">Packed Date</label>
+                            <div class="input-group date d-none d-md-flex" id="printed_date" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input" data-target="#printed_date" placeholder="Packed Date" readonly>
+                                <div class="input-group-append" data-target="#printed_date" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <div class="d-block d-md-none">
+                                <input id="printed_date_xs" type="date" class="form-control" placeholder="Packed Date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card mt-4 mb-5">
+                <div class="card-header bg-primary text-white">
+                    Step 2: Add Items to a Box
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 col-lg-4 pr-0">
+                            <label for="item1_fnsku">FNSKU</label>
+                        </div>
+                        <div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">
+                            <label for="item1_exp_date">Expiration Date</label>
+                        </div>
+                        <div class="col-3 col-lg-4 pl-1 pl-md-3">
+                            <label for="item1_quantity">Quantity</label>
+                        </div>
+                    </div>
+                    <div id="items">
+                        <div id="item1" class="row">
+                            <div class="col-4 col-lg-4 pr-0">
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" id="item1_id" value="1">
+        
+                                    <input type="text" class="form-control" id="item1_fnsku" placeholder="FNSKU">
+                                </div>
+                            </div>
+                            <div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">
+                                <div class="input-group date pb-3 d-none d-md-flex" id="item1_exp_date" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#item1_exp_date" placeholder="Expiration Date"/>
+                                    <div class="input-group-append" data-target="#item1_exp_date" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <div class="d-block d-md-none">
+                                    <input id="item1_exp_date_xs" type="date" class="form-control" placeholder="Exp. Date">
+                                </div>
+                            </div>
+                            <div class="col-3 col-lg-4 pl-1 pl-md-3">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" id="item1_quantity" min="0" step="1" placeholder="Quantity">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <hr>
+                            <button id="barcode_button" class="btn btn-outline-success mt-2 mr-2" onclick="addItem()"><i class="fas fa-plus"></i> Add Row</button>
+                            <button id="barcode_button" class="btn btn-primary btn-lg mt-2" onclick="generateBarcode()"><i class="fas fa-print"></i> Print Box Label</button>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button id="barcode_button" class="btn btn-info text-white mt-5 mr-2" onclick="reprintBarcode()"><i class="fas fa-redo-alt"></i> Reprint Last Label</button>
+                            <button id="barcode_button" class="btn btn-danger mt-5" onclick="clearBox()"><i class="fas fa-trash"></i> Empty Box</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="mt-4 d-none" id="section-to-print">
+                <div class="d-block" style="width:6in;word-wrap: break-all;">
+                    <table style="width:100%">
+                        <tr>
+                            <td class="text-left">
+                                <strong id="barcode_shipment_id">SHIPMENT ID:</strong>
+                            </td>
+                            <td class="text-right">
+                                <strong id="barcode_destination">DESTINATION:</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">
+                                <img id="barcode_image" src="#" class="img-fluid" style="max-width:6in">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center" >
+                                <small id="barcode_code">AMZN,PO:</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">
+                                <span id="barcode_date">Printed on 00/00/0000</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        
+            <canvas id="barcode" class="d-none"></canvas>
+        </section>
+    </div>
+</div>
+
+<script src="assets/js/jquery-3.4.1.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript" src="assets/js/moment.js"></script>
+<script type="text/javascript" src="assets/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script type="text/javascript" src="assets/js/libbcmath.js"></script>
+<script type="text/javascript" src="assets/js/bcmath.js"></script>
+<script type="text/javascript" src="assets/js/pdf417.js"></script>
+<script type="text/javascript" src="assets/js/scripts.js"></script>
+
+</body>
+</html>
