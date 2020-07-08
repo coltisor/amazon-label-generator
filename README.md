@@ -3,7 +3,7 @@
 
 ## Amazon FBA Box Content 2D Barcode Generator
 
-This tool provides bulk input workflow for creating 2D box contents barcodes for inbound Amazon FBA shipments.
+This tool provides bulk input workflow for creating 2D box contents labels for inbound Amazon FBA shipments.
 
 Main characteristics are:
 
