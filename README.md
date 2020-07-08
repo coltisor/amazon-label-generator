@@ -1,5 +1,4 @@
-<p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Better_Sample_PDF417.svg/1280px-Better_Sample_PDF417.svg.png" width="200"></p>
-
+<p align="center"><img src="https://i.ibb.co/7Y5JKhD/Untitled-1.png"></p>
 
 ## Amazon FBA Box Content 2D Barcode Generator
 
