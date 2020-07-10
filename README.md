@@ -27,4 +27,4 @@ Access the [application](https://hurryword.github.io/amazon-label-generator/) or
 
 ## Development
 
-This project is under development and any suggestions will be considered. 
+The project is under development and any suggestions will be considered. 
