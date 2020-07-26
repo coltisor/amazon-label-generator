@@ -1,6 +1,25 @@
 let date = new Date();
+let itemCount = 1;
 let lastBox = "";
 let printedAtLeasOnce = false;
+
+// ---
+
+window.onbeforeprint = function (event) {
+    let previewDiv = document.getElementById("section-to-print");
+    previewDiv.classList.remove('d-none');
+};
+
+window.onafterprint = function (event) {
+    let previewDiv = document.getElementById("section-to-print");
+    previewDiv.classList.add('d-none');
+};
+
+window.onbeforeunload = function () {
+    return 'Are you sure you want to leave?';
+};
+
+// ---
 
 $(function () {
     $('#printed_date').datetimepicker({
@@ -17,7 +36,9 @@ $(function () {
 
     date.setDate(date.getDate() + 120);
 
-    $('#item1_exp_date').datetimepicker({
+    let item1_exp_date = $('#item1_exp_date');
+
+    item1_exp_date.datetimepicker({
         locale: 'en',
         format: 'MM/DD/YYYY',
         minDate: date,
@@ -28,16 +49,27 @@ $(function () {
             clear: 'fas fa-backspace'
         }
     });
-    $('#item1_exp_date').find("input").val('');
+
+    item1_exp_date.find("input").val('');
 
     $('#item1_exp_date_xs').attr("min", moment(date).format('YYYY-MM-DD').toString());
-}); 
 
-$("#printed_date_xs").change(function () {
-    $('#printed_date').datetimepicker('date', moment($(this).val()))
+    $("#printed_date_xs").change(function () {
+        $('#printed_date').datetimepicker('date', moment($(this).val()))
+    });
+
+    $('#shipment_id').change(function () {
+        if ($(this).val().indexOf("/") >= 0) {
+            $(this).focus();
+            alert('A shipment ID can not contain a "/"');
+            return false;
+        }
+
+        document.title = $(this).val() + ' - PDF417 Barcode Generator';
+    });
 });
 
-let itemCount = 1;
+// ---
 
 function addItem() {
     itemCount++;
@@ -74,7 +106,9 @@ function addItem() {
     let itemsDiv = document.getElementById("items");
     itemsDiv.appendChild(newItem);
 
-    $('#item' + itemCount + '_exp_date').datetimepicker({
+    let itemCountExpDate = $('#item' + itemCount + '_exp_date');
+
+    itemCountExpDate.datetimepicker({
         locale: 'en',
         format: 'MM/DD/YYYY',
         minDate: date,
@@ -85,7 +119,7 @@ function addItem() {
             clear: 'fas fa-backspace'
         }
     });
-    $('#item' + itemCount + '_exp_date').find("input").val('');
+    itemCountExpDate.find("input").val('');
 
     $('#item' + itemCount + '_exp_date_xs').attr("min", moment(date).format('YYYY-MM-DD').toString());
 }
@@ -107,10 +141,12 @@ function clearBox() {
 function generateBarcode() {
     let canvas = document.getElementById("barcode");
 
-    let shipment = $('#shipment_id').val().trim().toUpperCase();
+    let shipmentId = $('#shipment_id');
+    let shipment = shipmentId.val().trim().toUpperCase();
+
     if (shipment.length < 6) {
         alert('Please enter a valid FBA Shipment ID.');
-        $('#shipment_id').focus();
+        shipmentId.focus();
         return false;
     }
     let barcodeShipment = document.getElementById("barcode_shipment_id");
@@ -130,25 +166,27 @@ function generateBarcode() {
     let fnskArray = [];
 
     for (let i = 1; i <= itemCount; i++) {
-        let fnsku = $('#item' + i + '_fnsku').val().trim().toUpperCase();
+        let itemFnsku = $('#item' + i + '_fnsku');
+        let fnsku = itemFnsku.val().trim().toUpperCase();
 
         var valid = /[A-Z][0-9][0-9]/;
         if (fnsku.length <= 0) {
             continue;
         }
 
-        if (fnsku.length < 8 || fnsku.length > 10 || valid.test(fnsku) == false) {
+        if (fnsku.length < 8 || fnsku.length > 10 || valid.test(fnsku) === false) {
             alert('Please check the SKU. It does not seem to be a valid FNSKU.');
-            $('#item' + i + '_fnsku').focus();
+            itemFnsku.focus();
             return false;
         }
 
         fnskArray.push(fnsku);
 
-        let quantity = $('#item' + i + '_quantity').val();
+        let itemQuantity = $('#item' + i + '_quantity');
+        let quantity = itemQuantity.val();
         if (quantity.length <= 0) {
             alert('Please check the Quantity of item ' + fnsku + '. It does not seem to be a valid value.');
-            $('#item' + i + '_quantity').focus();
+            itemQuantity.focus();
             return false;
         }
 
@@ -184,7 +222,7 @@ function generateBarcode() {
     text = items.join(',').toString();
     textHTML = itemsHTML.join('<strong>, </strong>').toString();
 
-    if (lastBox == text) {
+    if (lastBox === text) {
         if (confirm('This boxes contents is the same as last printed label. If you are not reprinting the last label, press Yes (or OK). If you are reprinting the label of the last box, press NO (or Cancel).')) {
             return false;
         } else {
@@ -214,9 +252,9 @@ function generateBarcode() {
 }
 
 function reprintBarcode() {
-    if (printedAtLeasOnce == false) {
+    if (printedAtLeasOnce === false) {
         alert('There is no Last Label to be Reprinted. Please use the "Print Box Label" button!');
-        return false();
+        return false;
     }
 
     // if (confirm('Do you want to Reprint Last Label?')) {
@@ -227,26 +265,6 @@ function reprintBarcode() {
 
     window.print();
 }
-
-window.onbeforeprint = function (event) {
-    let previewDiv = document.getElementById("section-to-print");
-    previewDiv.classList.remove('d-none');
-}; 
-
-window.onafterprint = function (event) {
-    let previewDiv = document.getElementById("section-to-print");
-    previewDiv.classList.add('d-none'); 
-}; 
-
-$('#shipment_id').change(function () {
-    if ($('#shipment_id').val().indexOf("/") >= 0) {
-        $('#shipment_id').focus();
-        alert('A shipment ID can not contain a "/"');
-        return false;
-    }
-
-    document.title = $('#shipment_id').val() + ' - PDF417 Barcode Generator';
-});
 
 function hasDuplicates(array) {
     var valuesSoFar = Object.create(null);
@@ -260,6 +278,3 @@ function hasDuplicates(array) {
     return false;
 }
 
-window.onbeforeunload = function () {
-    return 'Are you sure you want to leave?';
-};
