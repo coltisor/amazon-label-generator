@@ -17,7 +17,7 @@ Main characteristics are:
 
 ## Usage
 
-Access the [application](https://hurryword.github.io/amazon-label-generator/) or download the repository and run index.html file on any device.
+Access the [application](https://coltisor.github.io/amazon-label-generator/) or download the repository and run index.html file on any device.
 
 ## Instructions
 
