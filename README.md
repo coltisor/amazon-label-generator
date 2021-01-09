@@ -12,7 +12,7 @@ This tool provides bulk input workflow for creating 2D box contents labels for i
 - Bulk Input Interface
 - Responsive and tailored for both Desktop and Phone ([Bootstrap](https://github.com/twbs/bootstrap))
 - FNSKU identifiers
-- Add/Remove Items, Edit Existing Items
+- Add/Edit unlimited items
 - Has many input validation rules
 
 ## Usage
