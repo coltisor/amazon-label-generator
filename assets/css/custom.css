@@ -1,5 +1,12 @@
-html, body {
+html,
+body {
   overflow-x: hidden;
+  min-height: 100vh;
+}
+
+footer {
+  opacity: 0.75;
+  font-size: 0.75rem;
 }
 
 @page {
@@ -7,36 +14,37 @@ html, body {
 }
 
 @media print {
-    body * {
-        visibility: hidden;
-    }
+  body * {
+    visibility: hidden;
+  }
 
-    #section-to-print, #section-to-print * {
-        visibility: visible;
-    }
-    
-    #section-to-print {
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
+  #section-to-print,
+  #section-to-print * {
+    visibility: visible;
+  }
+
+  #section-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }
 
-@media (max-width: 575.98px) { 
-    html {
+@media (max-width: 575.98px) {
+  html {
     font-size: 14px;
-    }
+  }
 
-    .card-header:first-child {
-        border-radius: 0;
-    }
+  .card-header:first-child {
+    border-radius: 0;
+  }
 
-    .card {
-        border:0;
-    }
-    
-    .card-body {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
- }
+  .card {
+    border: 0;
+  }
+
+  .card-body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
