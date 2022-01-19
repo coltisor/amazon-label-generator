@@ -6,7 +6,7 @@ const staticAssets = [
     './assets/css/custom.css',
     './assets/js/scripts.js',
 
-    './assets/vendor/bcmatch.js',
+    './assets/vendor/bcmath.js',
     './assets/vendor/jquery-3.4.1.min.js',
     './assets/vendor/moment.js',
     './assets/vendor/libbcmath.js',
@@ -40,5 +40,3 @@ self.addEventListener('install', async e => {
 self.addEventListener('activate', e => {
     self.clients.claim();
 });
-
-console.log('e');
