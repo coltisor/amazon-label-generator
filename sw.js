@@ -41,11 +41,13 @@ self.addEventListener('activate', e => {
     self.clients.claim();
 });
 
-self.addEventListener('fetch', async e => {
-    const req = e.request;
-    const url = new URL(req.url);
-
-    const cache = await caches.open(cacheName);
-    const cached = await cache.match(req);
-    return cached || fetch(req);
+self.addEventListener("fetch", function (event) {
+    event.respondWith(
+        caches.match(event.request).then(function (response) {
+            if (response) {
+                return response;
+            }
+            return fetch(event.request);
+        })
+    );
 });
