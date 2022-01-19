@@ -10,7 +10,7 @@ async function registerSW() {
         try {
             await navigator.serviceWorker.register('./assets/sw.js');
         } catch (e) {
-            console.log("SW registration failed");
+            console.log("SW Registration error:", e);
         }
     }
 }
