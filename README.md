@@ -8,16 +8,19 @@ This tool provides bulk input workflow for creating 2D box contents labels for i
 
 - Written in HTML+JavaScript, which means no server needed for running
 - PDF-417 barcode format Output ([PDF417 JS Library](https://github.com/pkoretic/pdf417-generator))
-- 4”×6” label size (?)
+- 4”×6” label size
 - Bulk Input Interface
 - Responsive and tailored for both Desktop and Phone ([Bootstrap](https://github.com/twbs/bootstrap))
 - FNSKU identifiers
 - Add/Edit unlimited items
 - Has many input validation rules
+- Works offline (PWA)
 
 ## Usage
 
-Access the [application](https://coltisor.github.io/amazon-label-generator/) or download the repository and run index.html file on any device.
+Access the [application](https://coltisor.github.io/amazon-label-generator/) and, if you wish, you can install the app as an PWA on you device.
+
+How to install an PWA? Check here: [Tutorial](https://medium.com/progressivewebapps/how-to-install-a-pwa-to-your-device-68a8d37fadc1)
 
 ## Instructions
 
