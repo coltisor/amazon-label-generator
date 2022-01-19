@@ -18,7 +18,7 @@ This tool provides bulk input workflow for creating 2D box contents labels for i
 
 ## Usage
 
-Access the [application](https://coltisor.github.io/amazon-label-generator/) and, if you wish, you can install the app as an PWA on you device.
+Access the [application](https://coltisor.github.io/amazon-label-generator/) and, if you wish, you can install the app as an PWA on your device.
 
 How to install an PWA? Check here: [Tutorial](https://medium.com/progressivewebapps/how-to-install-a-pwa-to-your-device-68a8d37fadc1)
 
