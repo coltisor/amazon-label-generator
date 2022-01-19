@@ -13,7 +13,7 @@ This tool provides bulk input workflow for creating 2D box contents labels for i
 - Accepts FNSKU identifiers
 - Add/Edit unlimited items
 - Has all needed data validation rules
-- Works offline (PWA)
+- Works offline ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers))
 
 ## Usage
 
