@@ -21,7 +21,7 @@ Access the [application HERE](https://coltisor.github.io/amazon-label-generator/
 
 How to install a PWA? [Tutorial](https://medium.com/progressivewebapps/how-to-install-a-pwa-to-your-device-68a8d37fadc1)
 
-<img src="https://i.ibb.co/d2H4ZCk/IMG-0987.png" width="278" height="600">
+<img src="https://i.ibb.co/gDbpscT/image1.jpg">
 
 ## Instructions
 
