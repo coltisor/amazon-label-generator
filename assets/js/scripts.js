@@ -5,22 +5,6 @@ let printedAtLeasOnce = false;
 
 // ---
 
-async function registerSW() {
-    if ('serviceWorker' in navigator) {
-        try {
-            await navigator.serviceWorker.register('./assets/sw.js');
-        } catch (e) {
-            console.log("SW Registration error:", e);
-        }
-    }
-}
-
-window.onload = function () {
-    registerSW();
-}
-
-// ---
-
 window.onbeforeprint = function () {
     let previewDiv = document.getElementById("section-to-print");
     previewDiv.classList.remove('d-none');

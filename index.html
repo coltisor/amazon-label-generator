@@ -165,5 +165,21 @@
     <script src="assets/vendor/pdf417.js"></script>
 
     <script src="assets/js/scripts.js"></script>
+
+    <script>
+        async function registerSW() {
+            if ('serviceWorker' in navigator) {
+                try {
+                    await navigator.serviceWorker.register('./sw.js');
+                } catch (e) {
+                    console.log("SW Registration error:", e);
+                }
+            }
+        }
+
+        window.onload = function () {
+            registerSW();
+        }
+    </script>
 </body>
 </html>
