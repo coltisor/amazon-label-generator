@@ -5,12 +5,28 @@ let printedAtLeasOnce = false;
 
 // ---
 
-window.onbeforeprint = function (event) {
+async function registerSW() {
+    if ('serviceWorker' in navigator) {
+        try {
+            await navigator.serviceWorker.register('./assets/sw.js');
+        } catch (e) {
+            console.log("SW registration failed");
+        }
+    }
+}
+
+window.onload = function () {
+    registerSW();
+}
+
+// ---
+
+window.onbeforeprint = function () {
     let previewDiv = document.getElementById("section-to-print");
     previewDiv.classList.remove('d-none');
 };
 
-window.onafterprint = function (event) {
+window.onafterprint = function () {
     let previewDiv = document.getElementById("section-to-print");
     previewDiv.classList.add('d-none');
 };
@@ -78,28 +94,28 @@ function addItem() {
     newItem.setAttribute("id", 'item' + itemCount);
     newItem.classList.add('row');
 
-    newItem.innerHTML = 
+    newItem.innerHTML =
         '<div class="col-4 col-lg-4 pr-0">' +
-            '<div class="form-group">' +
-                '<input type="hidden" class="form-control" id="item' + itemCount + '_id" value="' + itemCount + '">' +
-                '<input type="text" class="form-control" id="item' + itemCount + '_fnsku" placeholder="FNSKU">' +
-            '</div>' +
+        '<div class="form-group">' +
+        '<input type="hidden" class="form-control" id="item' + itemCount + '_id" value="' + itemCount + '">' +
+        '<input type="text" class="form-control" id="item' + itemCount + '_fnsku" placeholder="FNSKU">' +
+        '</div>' +
         '</div>' +
         '<div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">' +
-            '<div class="input-group date pb-3 d-none d-md-flex" id="item' + itemCount + '_exp_date" data-target-input="nearest">' +
-                '<input type="text" class="form-control datetimepicker-input" data-target="#item' + itemCount + '_exp_date" placeholder="Expiration Date">' +
-                '<div class="input-group-append" data-target="#item' + itemCount + '_exp_date" data-toggle="datetimepicker">' +
-                    '<div class="input-group-text"><i class="fa fa-calendar"></i></div>' +
-                '</div>' +
-            '</div>' +
-            '<div class="d-block d-md-none">' +
-                '<input id="item' + itemCount + '_exp_date_xs" type="date" class="form-control" placeholder="Exp. Date">' +
-            '</div>' +
+        '<div class="input-group date pb-3 d-none d-md-flex" id="item' + itemCount + '_exp_date" data-target-input="nearest">' +
+        '<input type="text" class="form-control datetimepicker-input" data-target="#item' + itemCount + '_exp_date" placeholder="Expiration Date">' +
+        '<div class="input-group-append" data-target="#item' + itemCount + '_exp_date" data-toggle="datetimepicker">' +
+        '<div class="input-group-text"><i class="fa fa-calendar"></i></div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="d-block d-md-none">' +
+        '<input id="item' + itemCount + '_exp_date_xs" type="date" class="form-control" placeholder="Exp. Date">' +
+        '</div>' +
         '</div>' +
         '<div class="col-3 col-lg-4 pl-1 pl-md-3">' +
-                '<div class="form-group">' +
-                '<input type="number" class="form-control" id="item' + itemCount + '_quantity" min="0" step="1" placeholder="Quantity">' +
-            '</div>' +
+        '<div class="form-group">' +
+        '<input type="number" class="form-control" id="item' + itemCount + '_quantity" min="0" step="1" placeholder="Quantity">' +
+        '</div>' +
         '</div>';
 
 
@@ -159,7 +175,7 @@ function generateBarcode() {
 
     let printedDate = $('#printed_date').find("input").val();
     let barcodeDate = document.getElementById("barcode_date");
-    barcodeDate.innerHTML = '<b>Printed On ' + printedDate +'</b>';
+    barcodeDate.innerHTML = '<b>Printed On ' + printedDate + '</b>';
 
     let items = [];
     let itemsHTML = [];
