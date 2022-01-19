@@ -2,23 +2,22 @@
 
 ## Amazon FBA Box Content 2D Barcode Generator
 
-This tool provides bulk input workflow for creating 2D box contents labels for inbound Amazon FBA shipments.
+This tool provides bulk input workflow for creating 2D box contents labels for inbound Amazon FBA shipments. Works on Web, Android, iOS and does not require internet connection. 
 
 **Main characteristics are:**
 
-- Written in HTML+JavaScript, which means no server needed for running
 - PDF-417 barcode format Output ([PDF417 JS Library](https://github.com/pkoretic/pdf417-generator))
 - 4”×6” label size
 - Bulk Input Interface
-- Responsive and tailored for both Desktop and Phone ([Bootstrap](https://github.com/twbs/bootstrap))
-- FNSKU identifiers
+- Responsive and tailored for Desktop and Mobile ([Bootstrap](https://github.com/twbs/bootstrap))
+- Accepts FNSKU identifiers
 - Add/Edit unlimited items
-- Has many input validation rules
+- Has all needed data validation rules
 - Works offline (PWA)
 
 ## Usage
 
-Access the [application](https://coltisor.github.io/amazon-label-generator/) and, if you wish, you can install the app as an PWA on your device.
+Access the [application HERE](https://coltisor.github.io/amazon-label-generator/), and, you may also install the app as an PWA on your device.
 
 How to install a PWA? [Tutorial](https://medium.com/progressivewebapps/how-to-install-a-pwa-to-your-device-68a8d37fadc1)
 
