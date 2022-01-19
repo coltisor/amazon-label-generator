@@ -21,6 +21,22 @@ window.onbeforeunload = function () {
 
 // ---
 
+async function registerSW() {
+    if ('serviceWorker' in navigator) {
+        try {
+            await navigator.serviceWorker.register('sw.js');
+        } catch (e) {
+            console.log("SW Registration error:", e);
+        }
+    }
+}
+
+window.onload = function () {
+    registerSW();
+}
+
+// ---
+
 $(function () {
     $('#printed_date').datetimepicker({
         locale: 'en',
