@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.ibb.co/7Y5JKhD/Untitled-1.png"></p>
+<p align="center"><img src="https://i.ibb.co/gDbpscT/image1.jpg"></p>
 
 ## Amazon FBA Box Content 2D Barcode Generator
 
@@ -21,7 +21,7 @@ Access the [application HERE](https://coltisor.github.io/amazon-label-generator/
 
 How to install a PWA? [Tutorial](https://medium.com/progressivewebapps/how-to-install-a-pwa-to-your-device-68a8d37fadc1)
 
-<img src="https://i.ibb.co/gDbpscT/image1.jpg">
+<p align="center"><img src="https://i.ibb.co/7Y5JKhD/Untitled-1.png"></p>
 
 ## Instructions
 
