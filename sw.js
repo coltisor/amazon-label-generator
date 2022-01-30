@@ -7,7 +7,7 @@ const staticAssets = [
     './assets/js/scripts.js',
 
     './assets/vendor/bcmath.js',
-    './assets/vendor/jquery-3.4.1.min.js',
+    './assets/vendor/jquery-3.6.0.min.js',
     './assets/vendor/moment.js',
     './assets/vendor/libbcmath.js',
     './assets/vendor/pdf417.js',
