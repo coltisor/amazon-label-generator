@@ -35,7 +35,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="shipment_id">Shipment ID</label>
                             <input type="text" class="form-control" id="shipment_id" placeholder="Shipment ID">
                         </div>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="shipment_id">Destination Warehouse</label>
                             <input type="text" class="form-control" id="destination"
                                 placeholder="Destination Warehouse">
@@ -62,7 +62,7 @@
                 Step 2: Add Items to a Box
             </div>
             <div class="card-body">
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-4 col-lg-4 pr-0">
                         <label for="item1_fnsku">FNSKU</label>
                     </div>
@@ -74,35 +74,31 @@
                     </div>
                 </div>
                 <div id="items">
-                    <div id="item1" class="row">
+                    <div id="item1" class="row mb-3">
                         <div class="col-4 col-lg-4 pr-0">
-                            <div class="form-group">
-                                <input type="hidden" class="form-control" id="item1_id" value="1">
+                            <input type="hidden" class="form-control" id="item1_id" value="1">
 
-                                <input type="text" class="form-control" id="item1_fnsku" placeholder="FNSKU">
-                            </div>
+                            <input type="text" class="form-control" id="item1_fnsku" placeholder="FNSKU">
                         </div>
                         <div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">
                             <input id="item1_exp_date" type="date" class="form-control" placeholder="Exp. Date">
                         </div>
                         <div class="col-3 col-lg-4 pl-1 pl-md-3">
-                            <div class="form-group">
-                                <input type="number" class="form-control" id="item1_quantity" min="0" step="1"
-                                    placeholder="Quantity">
-                            </div>
+                            <input type="number" class="form-control" id="item1_quantity" min="0" step="1"
+                                placeholder="Quantity">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-center">
                         <hr>
-                        <button class="btn btn-outline-success mt-2 mr-2" onclick="addItem()"><i
+                        <button class="btn btn-outline-success mt-2 me-2" onclick="addItem()"><i
                                 class="fas fa-plus"></i> Add Row</button>
                         <button class="btn btn-primary btn-lg mt-2" onclick="generateBarcode()"><i
                                 class="fas fa-print"></i> Print Box Label</button>
                     </div>
                     <div class="col-12 text-center">
-                        <button class="btn btn-info text-white mt-5 mr-2" onclick="reprintBarcode()"><i
+                        <button class="btn btn-info text-white mt-5 me-2" onclick="reprintBarcode()"><i
                                 class="fas fa-redo-alt"></i> Reprint Last Label</button>
                         <button class="btn btn-danger mt-5" onclick="clearBox()"><i class="fas fa-trash"></i> Empty
                             Box</button>
@@ -115,10 +111,10 @@
             <div class="d-block" style="width:6in;word-wrap: break-all;">
                 <table style="width:100%">
                     <tr>
-                        <td class="text-left">
+                        <td class="text-start">
                             <strong id="barcode_shipment_id">SHIPMENT ID:</strong>
                         </td>
-                        <td class="text-right">
+                        <td class="text-end">
                             <strong id="barcode_destination">DESTINATION:</strong>
                         </td>
                     </tr>
@@ -144,17 +140,13 @@
         <canvas id="barcode" class="d-none"></canvas>
     </section>
 
-    <footer class="container text-faded p-3 pt-md-0 text-center text-md-left">
+    <footer class="container text-faded p-3 pt-md-0 text-center text-md-start">
         <p>
             Made by <a href="https://github.com/coltisor">coltisor</a>
         </p>
     </footer>
 
-
-
     <script src="assets/vendor/jquery-3.6.0.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/vendor/moment.js"></script>
     <script src="assets/vendor/libbcmath.js"></script>
     <script src="assets/vendor/bcmath.js"></script>

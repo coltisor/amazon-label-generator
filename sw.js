@@ -6,14 +6,13 @@ const staticAssets = [
     './assets/css/custom.css',
     './assets/js/scripts.js',
 
-    './assets/vendor/bcmath.js',
     './assets/vendor/jquery-3.6.0.min.js',
+    './assets/vendor/bcmath.js',
     './assets/vendor/moment.js',
     './assets/vendor/libbcmath.js',
     './assets/vendor/pdf417.js',
 
     './assets/vendor/bootstrap/css/bootstrap.min.css',
-    './assets/vendor/bootstrap/js/bootstrap.bundle.min.js',
 
     './assets/vendor/fontawesome/css/all.min.css',
     './assets/vendor/fontawesome/webfonts/fa-regular-400.eot',
