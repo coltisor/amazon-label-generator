@@ -23,31 +23,26 @@
 </head>
 
 <body>
-    <header class="container d-none d-md-block pt-3">
+    <header class="container d-none d-sm-block pt-3">
         <h2>Amazon FBA Box Label Generator</h2>
     </header>
 
-    <section class="container p-0 p-md-3">
+    <section class="container-sm p-0 p-md-3">
         <div class="card">
             <div class="card-header bg-primary text-white">
                 Step 1: Shipment ID and Destination
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="mb-3">
-                            <label for="shipment_id">Shipment ID</label>
-                            <input type="text" class="form-control" id="shipment_id" placeholder="Shipment ID">
-                        </div>
+                    <div class="col-12 mb-3">
+                        <label for="shipment_id">Shipment ID</label>
+                        <input type="text" class="form-control" id="shipment_id" placeholder="Shipment ID">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="shipment_id">Destination Warehouse</label>
-                            <input type="text" class="form-control" id="destination"
-                                placeholder="Destination Warehouse">
-                        </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="shipment_id">Destination Warehouse</label>
+                        <input type="text" class="form-control" id="destination" placeholder="Destination Warehouse">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="printed_date">Packed Date</label>
@@ -63,32 +58,34 @@
             </div>
             <div class="card-body">
                 <div class="row mb-3">
-                    <div class="col-4 col-lg-4 pr-0">
+                    <div class="col-4 col-lg-4 pe-0">
                         <label for="item1_fnsku">FNSKU</label>
                     </div>
-                    <div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">
+                    <div class="col-5 col-lg-4 pe-0 ps-1 ps-md-3">
                         <label for="item1_exp_date">Expiration Date</label>
                     </div>
-                    <div class="col-3 col-lg-4 pl-1 pl-md-3">
+                    <div class="col-3 col-lg-4 ps-1 ps-md-3">
                         <label for="item1_quantity">Quantity</label>
                     </div>
                 </div>
+
                 <div id="items">
                     <div id="item1" class="row mb-3">
-                        <div class="col-4 col-lg-4 pr-0">
+                        <div class="col-4 col-lg-4 pe-0">
                             <input type="hidden" class="form-control" id="item1_id" value="1">
 
                             <input type="text" class="form-control" id="item1_fnsku" placeholder="FNSKU">
                         </div>
-                        <div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">
+                        <div class="col-5 col-lg-4 pe-0 ps-1 ps-md-3">
                             <input id="item1_exp_date" type="date" class="form-control" placeholder="Exp. Date">
                         </div>
-                        <div class="col-3 col-lg-4 pl-1 pl-md-3">
+                        <div class="col-3 col-lg-4 ps-1 ps-md-3">
                             <input type="number" class="form-control" id="item1_quantity" min="0" step="1"
                                 placeholder="Quantity">
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-12 text-center">
                         <hr>
@@ -98,7 +95,7 @@
                                 class="fas fa-print"></i> Print Box Label</button>
                     </div>
                     <div class="col-12 text-center">
-                        <button class="btn btn-info text-white mt-5 me-2" onclick="reprintBarcode()"><i
+                        <button class="btn btn-secondary mt-5 me-2" onclick="reprintBarcode()"><i
                                 class="fas fa-redo-alt"></i> Reprint Last Label</button>
                         <button class="btn btn-danger mt-5" onclick="clearBox()"><i class="fas fa-trash"></i> Empty
                             Box</button>
@@ -108,33 +105,31 @@
         </div>
 
         <div class="mt-4 d-none" id="section-to-print">
-            <div class="d-block" style="width:6in;word-wrap: break-all;">
-                <table style="width:100%">
-                    <tr>
-                        <td class="text-start">
-                            <strong id="barcode_shipment_id">SHIPMENT ID:</strong>
-                        </td>
-                        <td class="text-end">
-                            <strong id="barcode_destination">DESTINATION:</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="text-center">
-                            <img id="barcode_image" src="#" class="img-fluid" style="max-width:6in">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="text-center">
-                            <small id="barcode_code">AMZN,PO:</small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="text-center">
-                            <span id="barcode_date">Printed on 00/00/0000</span>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+            <table style="width:100%">
+                <tr>
+                    <td class="text-start">
+                        <strong id="barcode_shipment_id">SHIPMENT ID:</strong>
+                    </td>
+                    <td class="text-end">
+                        <strong id="barcode_destination">DESTINATION:</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <img id="barcode_image" src="#" class="img-fluid" style="max-width:6in">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <small id="barcode_code">AMZN,PO:</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <span id="barcode_date">Printed on 00/00/0000</span>
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <canvas id="barcode" class="d-none"></canvas>

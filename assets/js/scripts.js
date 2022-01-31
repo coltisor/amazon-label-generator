@@ -64,14 +64,14 @@ function addItem() {
     newItem.classList.add('row');
     newItem.classList.add('mb-3');
     newItem.innerHTML =
-        `<div class="col-4 col-lg-4 pr-0">
+        `<div class="col-4 col-lg-4 pe-0">
             <input type="hidden" class="form-control" id="item${itemCount}_id" value="${itemCount}">
             <input type="text" class="form-control" id="item${itemCount}_fnsku" placeholder="FNSKU">
         </div>
-        <div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">
+        <div class="col-5 col-lg-4 pe-0 ps-1 ps-md-3">
             <input id="item${itemCount}_exp_date" type="date" class="form-control" placeholder="Exp. Date">
         </div>
-        <div class="col-3 col-lg-4 pl-1 pl-md-3">
+        <div class="col-3 col-lg-4 ps-1 ps-md-3">
             <input type="number" class="form-control" id="item${itemCount}_quantity" min="0" step="1" placeholder="Quantity">
         </div>`;
 
