@@ -3,7 +3,7 @@
   "name": "FBA Label Generator",
   "short_name": "FBA Labels",
   "description": "FBA Box Content 2D Barcode Generator",
-  "theme_color": "#007bff",
+  "theme_color": "#0d6efd",
   "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
