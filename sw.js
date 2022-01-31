@@ -26,9 +26,6 @@ const staticAssets = [
     './assets/vendor/fontawesome/webfonts/fa-solid-900.ttf',
     './assets/vendor/fontawesome/webfonts/fa-solid-900.woff',
     './assets/vendor/fontawesome/webfonts/fa-solid-900.woff2',
-
-    './assets/vendor/tempusdominus/tempusdominus-bootstrap-4.min.css',
-    './assets/vendor/tempusdominus/tempusdominus-bootstrap-4.min.js',
 ];
 
 self.addEventListener('install', async e => {

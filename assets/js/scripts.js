@@ -38,41 +38,10 @@ window.onload = function () {
 // ---
 
 $(function () {
-    $('#printed_date').datetimepicker({
-        locale: 'en',
-        format: 'MM/DD/YYYY',
-        defaultDate: date,
-        ignoreReadonly: true,
-        icons: {
-            'time': 'fas fa-clock'
-        }
-    });
-
-    $('#printed_date_xs').val(moment(date).format('YYYY-MM-DD').toString());
+    $('#printed_date').val(moment(date).format('YYYY-MM-DD').toString());
 
     date.setDate(date.getDate() + 120);
-
-    let item1_exp_date = $('#item1_exp_date');
-
-    item1_exp_date.datetimepicker({
-        locale: 'en',
-        format: 'MM/DD/YYYY',
-        minDate: date,
-        buttons: {
-            showClear: true
-        },
-        icons: {
-            clear: 'fas fa-backspace'
-        }
-    });
-
-    item1_exp_date.find("input").val('');
-
-    $('#item1_exp_date_xs').attr("min", moment(date).format('YYYY-MM-DD').toString());
-
-    $("#printed_date_xs").change(function () {
-        $('#printed_date').datetimepicker('date', moment($(this).val()))
-    });
+    $('#item1_exp_date').attr("min", moment(date).format('YYYY-MM-DD').toString());
 
     $('#shipment_id').change(function () {
         if ($(this).val().indexOf("/") >= 0) {
@@ -95,49 +64,25 @@ function addItem() {
     newItem.classList.add('row');
 
     newItem.innerHTML =
-        '<div class="col-4 col-lg-4 pr-0">' +
-        '<div class="form-group">' +
-        '<input type="hidden" class="form-control" id="item' + itemCount + '_id" value="' + itemCount + '">' +
-        '<input type="text" class="form-control" id="item' + itemCount + '_fnsku" placeholder="FNSKU">' +
-        '</div>' +
-        '</div>' +
-        '<div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">' +
-        '<div class="input-group date pb-3 d-none d-md-flex" id="item' + itemCount + '_exp_date" data-target-input="nearest">' +
-        '<input type="text" class="form-control datetimepicker-input" data-target="#item' + itemCount + '_exp_date" placeholder="Expiration Date">' +
-        '<div class="input-group-append" data-target="#item' + itemCount + '_exp_date" data-toggle="datetimepicker">' +
-        '<div class="input-group-text"><i class="fa fa-calendar"></i></div>' +
-        '</div>' +
-        '</div>' +
-        '<div class="d-block d-md-none">' +
-        '<input id="item' + itemCount + '_exp_date_xs" type="date" class="form-control" placeholder="Exp. Date">' +
-        '</div>' +
-        '</div>' +
-        '<div class="col-3 col-lg-4 pl-1 pl-md-3">' +
-        '<div class="form-group">' +
-        '<input type="number" class="form-control" id="item' + itemCount + '_quantity" min="0" step="1" placeholder="Quantity">' +
-        '</div>' +
-        '</div>';
-
+        `<div class="col-4 col-lg-4 pr-0">
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="item${itemCount}_id" value="${itemCount}">
+                <input type="text" class="form-control" id="item${itemCount}_fnsku" placeholder="FNSKU">
+            </div>
+        </div>
+        <div class="col-5 col-lg-4 pr-0 pl-1 pl-md-3">
+            <input id="item${itemCount}_exp_date" type="date" class="form-control" placeholder="Exp. Date">
+        </div>
+        <div class="col-3 col-lg-4 pl-1 pl-md-3">
+            <div class="form-group">
+                <input type="number" class="form-control" id="item${itemCount}_quantity" min="0" step="1" placeholder="Quantity">
+            </div>
+        </div>`;
 
     let itemsDiv = document.getElementById("items");
     itemsDiv.appendChild(newItem);
 
-    let itemCountExpDate = $('#item' + itemCount + '_exp_date');
-
-    itemCountExpDate.datetimepicker({
-        locale: 'en',
-        format: 'MM/DD/YYYY',
-        minDate: date,
-        buttons: {
-            showClear: true
-        },
-        icons: {
-            clear: 'fas fa-backspace'
-        }
-    });
-    itemCountExpDate.find("input").val('');
-
-    $('#item' + itemCount + '_exp_date_xs').attr("min", moment(date).format('YYYY-MM-DD').toString());
+    $('#item' + itemCount + '_exp_date').attr("min", moment(date).format('YYYY-MM-DD').toString());
 }
 
 function clearBox() {
@@ -167,7 +112,6 @@ function generateBarcode() {
     }
     let barcodeShipment = document.getElementById("barcode_shipment_id");
     barcodeShipment.innerHTML = shipment;
-
 
     let destination = $('#destination').val().trim().toUpperCase();
     let barcodeDestination = document.getElementById("barcode_destination");
@@ -209,13 +153,9 @@ function generateBarcode() {
         let itemString = "FNSKU:" + fnsku + ",QTY:" + quantity;
         let itemStringHTML = "<strong>FNSKU:</strong>" + fnsku + "<strong>, QTY:</strong>" + quantity;
 
-        let expDate = $('#item' + i + '_exp_date').find("input").val();
-        if (expDate.length <= 0) {
-            expDate = $('#item' + i + '_exp_date_xs').val();
-        }
+        let expDate = $('#item' + i + '_exp_date').val();
 
         if (expDate.length > 0) {
-
             itemString += ",EXP:" + moment(expDate).format('MMDDYY').toString();
             itemStringHTML += "<strong>, EXP:</strong>" + moment(expDate).format('MMDDYY').toString();
         }
