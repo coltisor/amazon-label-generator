@@ -51,7 +51,7 @@
       "type": "image/png"
     },
     {
-      "src": "path/to/icon-192x192-maskable.png",
+      "src": "assets/img/icon-192x192-maskable.png",
       "sizes": "196x196",
       "type": "image/png",
       "purpose": "any maskable"
