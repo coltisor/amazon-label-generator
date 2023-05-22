@@ -152,8 +152,8 @@ function generateBarcode() {
         let expDate = $('#item' + i + '_exp_date').val();
 
         if (expDate.length > 0) {
-            itemString += ",EXP:" + moment(expDate).format('MMDDYY').toString();
-            itemStringHTML += "<strong>, EXP:</strong>" + moment(expDate).format('MMDDYY').toString();
+            itemString += ",EXP:" + moment(expDate).format('YYMMDD').toString();
+            itemStringHTML += "<strong>, EXP:</strong>" + moment(expDate).format('YYMMDD').toString();
         }
 
         items.push(itemString);
